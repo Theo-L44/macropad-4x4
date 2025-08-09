@@ -17,7 +17,6 @@
  *  Tindie: https://www.tindie.com/stores/brianlough/
  *  Twitter: https://twitter.com/witnessmenow                                 
  *******************************************************************/
-
 // ----------------------------
 // Standard Libraries
 // ----------------------------
@@ -69,6 +68,7 @@ void commandoDiscord(uint8_t key) { //comandos dedicados para discord
   Keyboard.press(key);
 }
 int layer_actual = 0;
+
 void loop() {
   char key = keypad.getKey();
 
@@ -77,7 +77,7 @@ void loop() {
     Serial.println(layer_actual);
     
     switch (key) {
-      case 'A'://posibles layers por ahora nada
+      case 'A'://boton de layers
         layer_actual = (layer_actual + 1) % 2;
         break;
       case '1': //volumen hacia abajo
@@ -93,7 +93,7 @@ void loop() {
         if (layer_actual == 0) { //cambiar a la pestaña inmediatamente anterior
           Keyboard.press(KEY_LEFT_ALT);
           Keyboard.press(KEY_TAB);
-        } else if (layer_actual == 1) { //Abrir nueva pestaña (chrome)
+        } else if (layer_actual == 1) { //Abrir nueva ventana de navegador
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press('t');
         }
@@ -103,16 +103,16 @@ void loop() {
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press(KEY_LEFT_ALT);
           Keyboard.press(KEY_TAB);
-        } else if (layer_actual == 1) { //abrir ultima pestaña cerrada
+        } else if (layer_actual == 1) { //abrir ultima ventana cerrada
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press(KEY_LEFT_SHIFT);
           Keyboard.press('t');
         }  
         break;
       case '6':
-        if (layer_actual == 0) { //cambiar pestañas una vez abierto el menu de apps
+        if (layer_actual == 0) { //cambiar ventanas una vez abierto el menu de apps
           Keyboard.press(KEY_TAB);
-        } else if (layer_actual == 1) { //mover entre pestañas (hacia derecha)
+        } else if (layer_actual == 1) { //mover entre ventanas (hacia derecha)
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press(KEY_TAB);
         }  
@@ -120,17 +120,17 @@ void loop() {
       case 'B': 
         if (layer_actual == 0) { //enter
           Keyboard.press(KEY_RETURN);
-        } else if (layer_actual == 1) { //Abrir nueva pestaña de incognito (chrome)
+        } else if (layer_actual == 1) { //Abrir nueva ventana de incognito (chrome)
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press(KEY_LEFT_SHIFT);
-          Keyboard.press('n');
+          Keyboard.press('p');
         }
         break;
       case '7':
         if (layer_actual == 0) { //anterior (spotify)
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press(KEY_LEFT_ARROW);
-        } else if (layer_actual == 1) { //cerrar pestaña de chrome
+        } else if (layer_actual == 1) { //cerrar pestaña de navegador
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press('w');
         }
@@ -138,7 +138,7 @@ void loop() {
       case '8': 
         if (layer_actual == 0) {//pausar/reanudar (pensado para usar con spotify abierto)
           Keyboard.press(KEY_SPACE);
-        } else if (layer_actual == 1) { //cerrar todas las pestañas de chrome
+        } else if (layer_actual == 1) { //cerrar todas las ventanas de navegador
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press(KEY_LEFT_SHIFT);
           Keyboard.press('w');
@@ -148,7 +148,7 @@ void loop() {
         if (layer_actual == 0) { //siguiente (pensado para usar con spotify abierto)
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press(KEY_RIGHT_ARROW);
-        } else if (layer_actual == 1) { //recargar página chrome (F5)
+        } else if (layer_actual == 1) { //recargar pagina navegador (F5)
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press('r');
         }
@@ -158,7 +158,7 @@ void loop() {
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press(KEY_LEFT_ALT);
           Keyboard.press('s');
-        }else if (layer_actual == 1) { //abrir chrome
+        }else if (layer_actual == 1) { //abrir navegador
           Keyboard.press(KEY_LEFT_CTRL);
           Keyboard.press(KEY_LEFT_ALT);
           Keyboard.press('g');
@@ -167,15 +167,15 @@ void loop() {
       case '*':
         if (layer_actual == 0) { //mute/unmute discord
           commandoDiscord('m');
-        }else if (layer_actual == 1) { //snap izq app
+        }else if (layer_actual == 1) { //snap izquierda app
           Keyboard.press(KEY_LEFT_GUI);
           Keyboard.press(KEY_LEFT_ARROW);
         }
         break;
       case '0': 
-        if (layer_actual == 0) {//ensordecer/volver a poner sonido
+        if (layer_actual == 0) { //ensordecer/volver a poner sonido
           commandoDiscord('d');
-        }else if (layer_actual == 1) { //snap der app
+        }else if (layer_actual == 1) { //snap derecha app
           Keyboard.press(KEY_LEFT_GUI);
           Keyboard.press(KEY_RIGHT_ARROW);
         }
